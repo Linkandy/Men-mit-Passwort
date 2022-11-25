@@ -1,0 +1,154 @@
+using System;
+
+public class Program
+{
+    public static void Main()
+    {
+        Console.WriteLine("Willkommen beim Programm der Andy Cooperation!!!"); //begrüsst user
+        Console.WriteLine("Geben sie das Passwort ein um Zugriff auf das Programm zu erhalten sie haben 3 Versuche!");
+        int passwort = 6343; //Passwort
+        for (int i = 0; i < 3; i++) //Passwort Versuch Limit
+        {
+
+            int pwdcontrol = Convert.ToInt32(Console.ReadLine()); //Liest die eingabe des Passwort aus
+
+            if (pwdcontrol == passwort) //Programm startet wenn eingabe dem Passwort entspricht
+            {
+                Console.WriteLine("Sie wurden Autorisiert"); //Teilt dem User mit das er das Richtige Passwort eingegeben hat 
+                while (true)
+                {
+                    Console.WriteLine("\nWillkommen beim Programm der Andy Cooperation"); 
+                    Console.WriteLine("\nIhr gewähltes Programm bietet ihnen die Funktionen Rabatt, Rechner und Kunde hinzufügen");
+                    Console.WriteLine("\nGeben sie bitte ein welches der genannten Funktionen sie verwenden möchten\n");
+                    Console.WriteLine("Schreiben sie Exit um das Programm zu beenden\n");//Erklärt dem user die möglichen eingaben
+                    string Auswahl;
+                    Auswahl = Console.ReadLine();
+                    switch (Auswahl) //Die verschiedenen Programme die der User zuverfügung hat
+                    {
+                        case "Rabatt":
+                            {
+                                double invoiceAmount = 0.0;
+                                string txt;
+                                Console.WriteLine("");
+                                Console.Write("Bitte geben sie den Rechnungsbetrag ein:"); //verlangt den Rechnungsbetrag
+                                txt = Console.ReadLine();
+                                invoiceAmount = Convert.ToDouble(txt);
+                                if (invoiceAmount > 1000)
+                                {
+                                    invoiceAmount -= invoiceAmount * 0.04;
+                                    Console.WriteLine("");
+                                    Console.WriteLine("Es wird ein Rabatt von 4% gewährt.");
+                                }//gibt den Rabatt aus
+                                else
+                                {
+                                    Console.WriteLine("");
+                                    Console.WriteLine("Es wird kein Rabatt Gewährt");
+                                }
+                                Console.WriteLine("Gesammtbetrag: " + invoiceAmount);
+                                Console.WriteLine("");
+                               
+
+                            }//gibt den Betrag ohne Rabatt aus
+                            break;
+                        case "Rechner":
+                            Console.WriteLine("\nWillkommen beim Taschenrechner"); //Begrüüst User
+
+                            Console.WriteLine("\nGeben Sie zwei Zahlen ein");
+
+                            Console.Write("\nErste Zahl:  "); //verlangt zahl
+
+                            double zahl1 = Convert.ToDouble(Console.ReadLine()); //Konvertiert die Zahl
+
+                            Console.Write("\nZweite Zahl:  "); //verlangt zahl
+
+
+                            double zahl2 = Convert.ToDouble(Console.ReadLine()); //Konvertiert die Zahl
+
+                            Console.WriteLine("\nWas möchten sie tun? * = multiplizieren + = addieren - = subtrahieren / = dividieren ");// Verlangt eine Rechenweise
+
+                            char eingabe = Convert.ToChar(Console.ReadLine()); //Konvertiert die eingabe
+
+
+                            switch (eingabe) //Rechnet das verlangte aus
+
+                            {
+
+                                case '*':
+
+                                    Console.WriteLine(+(zahl1) + " * " + (zahl2) + " ist: " + (zahl1 * zahl2));
+
+
+                                    break;
+
+                                case '+':
+
+                                    Console.WriteLine(+(zahl1) + " + " + (zahl2) + " ist: " + (zahl1 + zahl2));
+
+
+
+                                    break;
+
+                                case '-':
+
+                                    Console.WriteLine(+(zahl1) + " - " + (zahl2) + " ist: " + (zahl1 - zahl2));
+
+
+
+                                    break;
+
+                                case '/':
+
+                                    Console.WriteLine(+(zahl1) + " / " + (zahl2) + " ist: " + (zahl1 / zahl2));
+
+
+
+                                    break;
+
+
+
+                                default:
+
+                                    Console.WriteLine("Sie dürfen nur *,+,-,/ eingeben");
+
+                                    break;
+
+                            }
+
+
+
+                            Console.ReadLine(); //verlangt noch eine eingabe, damit wird das ergebnis angezeigt
+                            break;
+                        case "Kunde hinzufügen":
+                            Console.WriteLine("\nGeben sie den Vornamen und Nachnamen des Kunden ein den sie hinzufügen möchten"); //Verlangt name und Vorname
+                            string Kunde = Console.ReadLine();
+                            Console.WriteLine(Kunde + " wurde Erfolgreich hinzugefügt "); //gibt aus das der User gespeichert wurde
+
+                            break;
+                        case "Exit":
+                            Console.WriteLine("\nVielen dank dass sie sich für die Andy Cooperation entschieden haben. Aufwiedersehen.");
+                            Environment.Exit(0); //beendet die schleife
+                            break;
+                    }
+
+                }
+
+            }
+            else
+            {
+                if (i < 3)
+                {
+                    Console.WriteLine("Ihre eingabe ist Falsch!"); //Reagiert bei einer Falschen eingabe
+
+                }
+
+                else
+                {
+                    Console.WriteLine("Sie haben das Passwort zu oft falsch eingegeben, sie werden ausgeloggt");
+
+                }
+            }
+        
+
+        }
+    }
+}
